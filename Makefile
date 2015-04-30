@@ -2,7 +2,7 @@ build:
 	sudo docker build -t aoki/glycoinfo-site .
 
 run:
-	sudo docker run -d -p 10000:80 -h local.glycoinfo-site --link mf:mf --name="glycoinfo-site" aoki/glycoinfo-site
+	sudo docker run -d -p 10000:80 -h local.glycoinfo-site -v /mnt/jenkins/workspace/MolecularFramework/target/site:/var/www/html/MolecularFramework --name="glycoinfo-site" aokinobu/apache
 
 runtest:
 	sudo docker run -d -p 10000:80 -h local.glycoinfo-site -v /mnt/jenkins/workspace/MolecularFramework/target/site:/var/www/html/mf --name="glycoinfo-site" aokinobu/apache
