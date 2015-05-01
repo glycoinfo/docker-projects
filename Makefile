@@ -2,10 +2,10 @@ build:
 	sudo docker build -t aoki/glycoinfo-site .
 
 run:
-	sudo docker run -d -p 10000:80 -h local.glycoinfo-site -v /mnt/jenkins/workspace/MolecularFramework/target/site:/var/www/html/MolecularFramework --name="glycoinfo-site" aokinobu/apache
+	sudo docker run -d -p 10000:80 -h local.glycoinfo-site -v /mnt/jenkins/workspace/MolecularFramework/target/site:/var/www/html/MolecularFramework -v /mnt/jenkins/workspace/glyspace/target/site:/var/www/html/glyspace -v /mnt/jenkins/workspace/batch/target/site:/var/www/html/batch --name="glycoinfo-site" aokinobu/apache
 
 runtest:
-	sudo docker run -d -p 10000:80 -h local.glycoinfo-site -v /mnt/jenkins/workspace/MolecularFramework/target/site:/var/www/html/mf --name="glycoinfo-site" aokinobu/apache
+	sudo docker run -d -p 10000:80 -h local.glycoinfo-site -v /mnt/jenkins/workspace/MolecularFramework/target/site:/var/www/html/MolecularFramework -v /mnt/jenkins/workspace/glyspace/target/site:/var/www/html/glyspace -v /mnt/jenkins/workspace/batch/target/site:/var/www/html/batch --name="glycoinfo-site" aokinobu/apache
 
 rundev:
 	sudo docker run -it --rm -p 10000:80 -h local.glycoinfo-site -v /home/aoki/workspace/molecularframework/target/site:/var/www/html/mf --name="glycoinfo-site" aokinobu/apache
